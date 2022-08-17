@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 
 # Copy composer.lock and composer.json
-# COPY composer.json /var/www/
+# COPY composer.json /var/www/ 
 
 # Set working directory
 WORKDIR /var/www/
@@ -34,8 +34,8 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
-COPY app/* /var/www
-
+COPY . /var/www/
+WORKDIR /var/www/app
 # import your packages and create the vendor folder
 RUN composer install
 
